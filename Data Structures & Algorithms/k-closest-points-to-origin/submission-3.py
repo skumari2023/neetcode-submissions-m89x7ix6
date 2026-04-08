@@ -1,0 +1,16 @@
+class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        
+        heap = []
+        val = 0
+
+        for i in range(len(points)):
+            val = ((points[i][0] ** 2) + (points[i][1] ** 2)) ** 0.5
+            heapq.heappush(heap, (val, points[i]))
+        
+        output = []
+        while len(output) < k:
+            output.append(heapq.heappop(heap)[1])
+        return output
+        
+        
