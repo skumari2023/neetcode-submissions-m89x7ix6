@@ -1,0 +1,13 @@
+class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        
+        heap = []
+        for i in range(len(points)):
+            val = ((points[i][0] ** 2) + (points[i][1] ** 2)) ** 0.5
+            heapq.heappush(heap, (val, points[i]))
+        
+        #smallest val always the root in minHeap
+        output = []
+        while len(output) < k:
+            output.append(heapq.heappop(heap)[1])
+        return output
